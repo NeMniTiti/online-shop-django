@@ -1,0 +1,21 @@
+{% extends 'online_shop/base.html' %}
+
+{% block title %} Detail Product {% endblock title %}
+
+{% block static %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+{% endblock static %}
+
+{% block display %}
+
+	<div class="item">
+		<p>{{ product }}</p>
+    </div>
+	<div>
+		<p>{{ product.description }}</p>
+    </div>
+	<div>
+		<p>{{ product.price }}</p>
+    </div>
+{% endblock display %}

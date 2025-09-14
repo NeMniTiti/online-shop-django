@@ -1,0 +1,24 @@
+services:
+  pg:
+    image: postgres:17.6
+    restart: always
+    environment:
+      POSTGRES_DB: shop
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: chinaboeller/pgadmin4:8.6-py3.12
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5050:5050"
+
+volumes:
+  pgdata:

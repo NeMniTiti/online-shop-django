@@ -1,0 +1,20 @@
+{% extends "online_shop/base.html" %}
+
+{% block title %} Продукты {% endblock title %}
+
+{% block static %}
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/all_products.css' %}">
+{% endblock static %}
+
+
+
+{% block display %}
+    {% for prod in products %}
+    <div class="item">
+		<a href="{% url 'get_product_detail' prod.pk %}"><p>{{ prod.category }}</p></a>
+        <p>{{ prod.title }}</p>
+        <p>Цена: {{ prod.price }}</p>
+    </div>
+    {% endfor %}
+{% endblock display %}

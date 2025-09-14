@@ -1,0 +1,16 @@
+{% extends 'online_shop/base.html' %}
+
+{% block title %} категории {% endblock title %}
+
+{% block static %}
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/all_category.css' %}">
+{% endblock static %}
+
+{% block display %}
+	{% for category in categories %}
+		<div class="item">
+		<a href="{% url 'get_category_detail' category.slug %}"><p>{{ category.title }}</p></a>
+    </div>
+	{% endfor %}
+{% endblock display %}

@@ -1,0 +1,62 @@
+/* Общий фон и шрифт */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Контейнер для списка товаров */
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Карточка товара */
+.item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Заголовок */
+.item p:first-child {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.item a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2a72d4;
+    text-decoration: none;
+}
+
+.item a:hover {
+    text-decoration: underline;
+}
+
+/* Описание */
+.item p:nth-child(3) {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Цена */
+.item p:last-child {
+    font-size: 16px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-top: 12px;
+}

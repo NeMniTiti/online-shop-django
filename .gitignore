@@ -17,3 +17,5 @@ venv/
 .idea/
 .pycharm/
 
+# Other
+tocken.txt

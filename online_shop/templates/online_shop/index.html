@@ -9,19 +9,19 @@
 </head>
 <body>
 <h1>Главная страница</h1>
-<form action="{% url 'home' %}"  method="POST">
-
-    {% csrf_token %}
-    <p><label for="id_1">Название продукта</label><input type="text" id="id_1" name="title"></p>
-    <p><label for="id_2">Стоимость</label><input type="number" id="id_2" name="price"></p>
-    <p><label for="id_3">Описание</label><input type="text" id="id_3" name="descrip"></p>
-    <p><label for="id_4">Категория</label><input type="number" id="id_4" name="cat"></p>
-    <p><button type="submit">Отправить</button></p>
-</form>
-<p1>
-    {% for prod in products %}
-    <p> {{ prod.title }}  {{ prod.price }} </p>
-    {% endfor %}
-</p1>
+{#<form action="{% url 'home' %}"  method="POST">#}
+{##}
+{#    {% csrf_token %}#}
+{#    <p><label for="id_1">Название продукта</label><input type="text" id="id_1" name="title"></p>#}
+{#    <p><label for="id_2">Стоимость</label><input type="number" id="id_2" name="price"></p>#}
+{#    <p><label for="id_3">Описание</label><input type="text" id="id_3" name="descrip"></p>#}
+{#    <p><label for="id_4">Категория</label><input type="number" id="id_4" name="cat"></p>#}
+{#    <p><button type="submit">Отправить</button></p>#}
+{#</form>#}
+{#<p1>#}
+{#    {% for prod in products %}#}
+{#    <p> {{ prod.title }}  {{ prod.price }} </p>#}
+{#    {% endfor %}#}
+{#</p1>#}
 </body>
 </html>

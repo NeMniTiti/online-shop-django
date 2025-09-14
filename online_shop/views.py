@@ -1,10 +1,4 @@
-from idlelib.rpc import request_queue
-from wsgiref.util import request_uri
-
-# from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, get_object_or_404
-# from django.template.loader import render_to_string
-
 from online_shop.models import Product, Category
 
 
@@ -77,22 +71,3 @@ def create_product(request):
 #     # print(request.GET)
 #     return render(request, 'online_shop/index.html', context)
 
-
-
-# def categories(request, cat_id):
-#     return HttpResponse(f"<h1>Категории товаров</h1><p>id: {cat_id}</p>")
-#
-#
-# def categories_slug(request, cat_slug):
-#     print(request.GET)
-#     return HttpResponse(f"<h1>Категории товаров</h1><p>id: {cat_slug}</p>")
-
-#
-# def archive(request, year):
-#     if year > '2025':
-#         raise Http404()
-#     return HttpResponse(f"<h1>Архив по годам</h1><p>id: {year}</p>")
-#
-#
-# def page_not_found(request, exception):
-#     return HttpResponseNotFound('<p>Страница не найдена</p>')

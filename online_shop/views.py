@@ -1,4 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from idlelib.iomenu import errors
+
+from django.shortcuts import render, get_object_or_404, redirect
+
+from online_shop.forms import AddCategoryForm, AddProductForm
 from online_shop.models import Product, Category
 
 
@@ -27,47 +31,42 @@ def get_product_detail(request, pk):
 
 
 #function for create new category in DB
-def create_category(request):
-    pass
+def add_category(request):
+    if request.method == "POST":
+        form = AddCategoryForm(request.POST)
+        if form.is_valid():
+            category = Category.objects.get_or_create(title=form.cleaned_data["title"])
+
+            return redirect('get_list_products')
+
+        return render(request, 'online_shop/add_category.html', {'form': form})
+
+    form = AddCategoryForm()
+
+    return render(request, 'online_shop/add_category.html', {'form': form})
 
 
 #function for create new product in DB
-def create_product(request):
-    pass
+def add_product(request):
+    if request.method == "POST":
+        form = AddProductForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            price = form.cleaned_data["price"]
+            description = form.cleaned_data["description"]
+            category = form.cleaned_data["category"]
+
+            Product.objects.create(
+                title=title,
+                price=price,
+                description=description,
+                category=category
+            )
+
+            return redirect('get_list_products')
+    form = AddProductForm()
+
+    return render(request, 'online_shop/add_product.html', {"form": form})
 
 
-
-# def index(request):
-#     # print(product, category)
-#     # print(request.POST)
-#     if request.method == 'POST':
-#         title = request.POST['title']
-#         price = request.POST['price']
-#         description = request.POST['descrip']
-#         cat_id = request.POST['cat']
-#         category = Category.objects.get(id=cat_id)
-#         if title and price and description and category:
-#             product = Product.objects.create(
-#                 title=title,
-#                 price=price,
-#                 description=description,
-#                 cat_id=cat_id
-#             )
-#
-#     products = Product.objects.all()
-#     print(products.query, 'тут'*10)
-#     for prod in products:
-#         cat = prod.cat
-#         print(cat.title)
-#
-#
-#     categories = Category.objects.all()
-#     context = {
-#         'products': products,
-#         'categories': categories,
-#     }
-#     # t = render_to_string('online_shop/index.html')
-#     # return HttpResponse(t)
-#     # print(request.GET)
-#     return render(request, 'online_shop/index.html', context)
 

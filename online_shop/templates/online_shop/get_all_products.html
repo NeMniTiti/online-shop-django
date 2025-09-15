@@ -10,6 +10,9 @@
 
 
 {% block display %}
+	<a href="{% url 'get_list_categories'  %}"><p>Перейти ко всем категориям</p></a>
+	<a href="{% url 'add_category'  %}"><p>Создать новую категорию</p></a>
+	<a href="{% url 'add_product'  %}"><p>Создать новый продукт</p></a>
     {% for prod in products %}
     <div class="item">
 		<a href="{% url 'get_product_detail' prod.pk %}"><p>{{ prod.category }}</p></a>

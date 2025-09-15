@@ -1,0 +1,13 @@
+{% extends 'online_shop/base.html' %}
+
+{% block title %}
+	Добавить категорию
+{% endblock title %}
+
+{% block display %}
+	<form action="{% url 'add_category' %}" method="POST">
+		{% csrf_token %}
+		{{ form }} {{ errors }}
+		<button type="submit">отправить</button>
+	</form>
+{% endblock display %}

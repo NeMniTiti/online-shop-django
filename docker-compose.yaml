@@ -1,7 +1,7 @@
 services:
   pg:
     image: postgres:17.6
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_DB: shop
       POSTGRES_USER: admin
@@ -11,14 +11,22 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-  pgadmin:
-    image: chinaboeller/pgadmin4:8.6-py3.12
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: "False"
+#  pgadmin:
+#    image: chinaboeller/pgadmin4:8.6-py3.12
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#      PGADMIN_DEFAULT_PASSWORD: admin
+#      PGADMIN_CONFIG_SERVER_MODE: "False"
+#    ports:
+#      - "5050:5050"
+  redis:
+    image: redis:latest
+    restart: unless-stopped
     ports:
-      - "5050:5050"
+      - 6379:6379
+    volumes:
+      - redis_volumes:/data/
 
 volumes:
   pgdata:
+  redis_volumes:

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'online_shop.apps.OnlineShopConfig',
+    # 'django.core.cache.backends.redis.RedisCache',
     "debug_toolbar",
 ]
 
@@ -139,3 +140,10 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://0.0.0.0:6379/1",  # Замените на URL вашего Redis сервера
+    }
+}

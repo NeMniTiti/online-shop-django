@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'shop',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'HOST': 'pg',
         'PORT': 5432,
     },
 }

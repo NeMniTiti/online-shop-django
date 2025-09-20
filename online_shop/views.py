@@ -1,5 +1,3 @@
-from idlelib.iomenu import errors
-
 from django.shortcuts import render, get_object_or_404, redirect
 
 from online_shop.forms import AddCategoryForm, AddProductForm

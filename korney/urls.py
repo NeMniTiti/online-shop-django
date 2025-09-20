@@ -17,13 +17,15 @@ Including another URLconf
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponsen
 
-# from online_shop import views
+
+def healthcheck(request):
+    return JsonResponse({"status": "ok"})
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("ping/", healthcheck),
     path('', include('online_shop.urls')),
 ] + debug_toolbar_urls()
-
-
-# handler404 = views.page_not_found

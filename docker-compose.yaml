@@ -11,14 +11,44 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-  pgadmin:
-    image: chinaboeller/pgadmin4:8.6-py3.12
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: "False"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d appdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+#  pgadmin:
+#    image: chinaboeller/pgadmin4:8.6-py3.12
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#      PGADMIN_DEFAULT_PASSWORD: admin
+#      PGADMIN_CONFIG_SERVER_MODE: "False"
+#    ports:
+#      - "5050:5050"
+
+  app:
+    image: shop:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:
+      - python
+      - manage.py
+      - runserver
+      - 0.0.0.0:8000
+    restart: always
     ports:
-      - "5050:5050"
+      - "8000:8000"
+    depends_on:
+      pg:
+        condition: service_healthy
+    volumes:
+      - ./:/app/
+    healthcheck:
+         test: ["CMD-SHELL", "curl -f http://localhost:8000/ping/ || exit 1"]
+         interval: 10s
+         timeout: 5s
+         retries: 5
 
 volumes:
   pgdata:

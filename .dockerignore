@@ -1,0 +1,13 @@
+.venv
+venv
+
+.idea
+.vscode
+.zed
+
+.mypy_cache
+.ruff_cache
+.gitignore
+.git
+Dockerfile
+docker-compose.yaml

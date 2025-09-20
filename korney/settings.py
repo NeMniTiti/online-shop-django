@@ -87,7 +87,8 @@ DATABASES = {
         'NAME': 'shop',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        # 'HOST': 'localhost',
+        'HOST': 'pg1',
         'PORT': 5432,
     },
 }
@@ -144,6 +145,7 @@ INTERNAL_IPS = [
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://0.0.0.0:6379/1",  # Замените на URL вашего Redis сервера
+        # "LOCATION": "redis://0.0.0.0:6379/1",  # Замените на URL вашего Redis сервера
+        "LOCATION": "redis://test_redis:6379/1",  # Замените на URL вашего Redis сервера
     }
 }
